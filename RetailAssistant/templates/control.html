@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"> 
+	<title>零售商库存管理助手</title>
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
+  <!-- <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"> -->
+  <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<style>
+    .fakeimg {
+        height: 200px;
+         background: #aaa;
+    }
+  </style>
+</head>
+<body>
+<!-- <div class="jumbotron text-center" style="margin-bottom:0">
+  <h1>我的第一个 Bootstrap 页面</h1>
+  <p>重置浏览器窗口大小查看效果！</p> 
+</div> -->
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">零售商库存管理助手</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="#">主页</a></li>
+        <li class="active"><a href="#">控制台</a></li>
+        <li><a href="#">分析</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Settings</a></li>
+        <li><a href="#">Help</a></li>
+      </ul>
+      <form class="navbar-form navbar-right">
+        <input type="text" class="form-control" placeholder="Search...">
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2">
+      <h3>筛选</h3>
+      
+      <form role="form">
+        <div class="form-group">
+          <p>品牌：</p>
+          <select class="form-control">
+            <option value="">默认选择</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <p>产品：</p>
+          <select class="form-control">
+            <option value="">默认选择</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <p>仓库：</p>
+          <select class="form-control">
+            <option value="">默认选择</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <p>型号：</p>
+          <input class="form-control" type="text" placeholder="">
+        </div>
+        
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">查找</button>
+          </div>
+        </div>
+       
+
+      </form>
+    </div>
+    <div class="col-sm-10">
+      <ul class="nav navbar-nav navbar-right"> 
+        <li><button class="btn btn-primary" data-toggle="modal" data-target="#addItem"><span class="glyphicon glyphicon-plus"></span> 增加</button></li> 
+      </ul> 
+      <div class="modal fade" id="addItem" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">增加产品</h4>
+                    </div>
+                    <div class="modal-body">
+                      暂时不可用
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary">提交</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
+
+
+      <h3>浏览</h3>
+      
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>品牌</th>
+              <th>产品</th>
+              <th>型号</th>
+              <th>仓库</th>
+              <th>当前库存</th>
+              <th>详细</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1,001</td>
+              <td>Lorem</td>
+              <td>ipsum</td>
+              <td>ipsum</td>
+              <td>dolor</td>
+              <td>1</td>
+              <td>
+                <a href="#" data-toggle="modal" data-target="#info">查看详情</a> /
+                <a href="#" data-toggle="modal" data-target="#operate">进出货</a> 
+              </td>
+            </tr>
+            <tr>
+              <td>1,002</td>
+              <td>amet</td>
+              <td>consectetur</td>
+              <td>ipsum</td>
+              <td>adipiscing</td>
+              <td>2</td>
+              <td>
+                <a href="#" data-toggle="modal" data-target="#info">查看详情</a> /
+                <a href="#" data-toggle="modal" data-target="#operate">进出货</a> 
+              </td>
+            </tr>
+            <tr>
+              <td>1,002</td>
+              <td>amet</td>
+              <td>consectetur</td>
+              <td>ipsum</td>
+              <td>adipiscing</td>
+              <td>3</td>
+              <td>
+                <a href="#" data-toggle="modal" data-target="#info">查看详情</a> /
+                <a href="#" data-toggle="modal" data-target="#operate">进出货</a> 
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="modal fade" id="info" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">查看详情</h4>
+                    </div>
+                    <div class="modal-body">
+                      <p>仓库 品牌 产品 型号</p>
+                      <div class="table-responsive">
+                        <table class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th>日期</th>
+                              <th>实际售价</th>
+                              <th>数量</th>
+                              <th>顾客</th>
+                              <th>安装师傅</th>
+                              <th>进货渠道</th>
+                              <th>其他备注</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>2020/6/1</td>
+                              <td>Lorem</td>
+                              <td>ipsum</td>
+                              <td>ippppppsum</td>
+                              <td>ipsummmmmm</td>
+                              <td>ipsum</td>
+                              <td>ipsum</td>
+                            </tr>
+                            <tr>
+                              <td>2020/6/1</td>
+                              <td>Lorem</td>
+                              <td>ipsum</td>
+                              <td>ippppppsum</td>
+                              <td>ipsummmmmm</td>
+                              <td>ipsum</td>
+                              <td>ipsum</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
+        <div class="modal fade" id="operate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">进出货</h4>
+                    </div>
+                    <div class="modal-body">
+
+                      <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">日期</label>
+                          <div class="col-sm-10">
+                            <div class="controls input-append date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input" data-link-format="yyyy-mm-dd">
+                              <input size="16" type="text" value="" readonly>
+                              <span class="add-on"><i class="icon-remove"></i></span>
+                              <span class="add-on"><i class="icon-th"></i></span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">价格</label>
+                          <div class="col-sm-10"><input class="form-control" type="text" placeholder=""></div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">数量</label>
+                          <div class="col-sm-10"><input class="form-control" type="number" placeholder=""></div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">顾客</label>
+                          <div class="col-sm-10"><input class="form-control" type="text" placeholder=""></div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">安装师傅</label>
+                          <div class="col-sm-10"><input class="form-control" type="text" placeholder=""></div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">进货渠道</label>
+                          <div class="col-sm-10"><input class="form-control" type="text" placeholder=""></div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label">其他备注</label>
+                          <div class="col-sm-10"><input class="form-control" type="text" placeholder=""></div>
+                        </div>
+
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary">提交</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
+
+        
+        <ul class="pagination">
+          <li><a href="#">&laquo;</a></li>
+          <li class="active"><a href="#">1</a></li>
+          <li class="disabled"><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li><a href="#">&raquo;</a></li>
+        </ul>
+
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <h5>Developed By Allegra</h>
+</div>
+
+</body>
+</html>

@@ -29,7 +29,10 @@ from django.urls import path
 from . import views
  
 urlpatterns = [
-    url(r'^$', views.home),
+    # url(r'^$', views.home),
+    path('', views.home),
     path('home/', views.home),
+    path('dashboard/', views.dashboard),
+    path('control/', views.control),
     path('hello/', views.hello),
 ]
