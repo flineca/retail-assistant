@@ -1,0 +1,94 @@
+开发记录
+
+7.28
+
+继续调整，暂时否定vue
+管理员用户：admin或Allegra/233
+
+7.29
+
+settings数据库设置；
+创建django app（settings要注意：1.数据库 2.installed app加上）；
+修改models，用index测试，有无数据的界面出现，但是无法post；
+建虚拟环境；
+
+一些暂时保留的问题： 
+	1. 中止了一个已建立的链接，应进行ajax异步设置； 
+	2. favicon.ico warning
+
+7.30
+
+无法post：
+	1. 导入jquery 
+	2. 未解决：Forbidden (CSRF token missing or incorrect.): /index/
+
+8.1
+
+解决favicon.ico: 
+	在线生成图标；
+	settings里的STATIC_URL已经是static，手动建立文件夹（与manage.py同目录）
+
+目前control的概念：
+	1. APP NAME，下有models没有html； 
+	2. url和templete html
+
+注意：所有templete都在一个文件夹
+
+遗留问题：render_to_response没法导入
+
+
+
+12.16
+
+虚拟环境以后都用venv：
+    python -m venv 环境名称
+
+virtualenv主要的好处是兼容python2
+
+12.23
+
+理清楚migrations的内容
+每次migrations app1只是针对修改来生成一个py文件
+    有时候会问你是否rename；即使表里没有数据也会问你增加的属性默认值是什么，先填点东西试试，
+migrate命令是运行py文件
+如果期间自己改了数据库或者某次py文件运行到一半就终止，那就会造成冲突。
+比如no such column，或者没法rename
+
+12.24
+
+admin界面管理成功，开始用html
+
+12.25
+
+CSRF：在django只要在模板文件的表单里用一句话就可以了；
+
+12.26
+
+要规范一下表单处理的方法，比如try和except的排布，让它看起来整齐一点。 
+
+12.30
+学习了一下重定向的概念
+。。
+
+
+2.25
+发现vs code可以进行WSL远程操作
+
+
+2.26
+通用试图终于会用了
+
+3.2
+搜了一下命令行中的正反斜杠的问题，windows标准是反斜杠。跟*nix 刚好相反。
+但似乎从 win10 开始， cmd 也接受正斜杠了
+
+
+3.29
+感觉数据结构还是要改，尤其是history和交易对象的设计；
+如果不改，就交给前端，在排序列表的时候需要按时间顺序把进货和出货一起显示。
+
+3.31
+warehouse是否应该属于product的一个属性？
+
+6.5
+warehouse变成一个属性。删掉db，需要重新搜一下django models里怎么用枚举

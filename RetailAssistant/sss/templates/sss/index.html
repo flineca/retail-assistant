@@ -1,0 +1,8 @@
+<h1>Storage</h1>
+<ul>
+{% for storage in object_list %}
+    <li>{{ storage }}</li>
+{% empty %}
+    <li>No storage yet.</li>
+{% endfor %}
+</ul>

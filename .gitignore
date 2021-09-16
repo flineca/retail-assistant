@@ -1,0 +1,12 @@
+.vscode/*
+pyenv1/*
+*.py[cod]
+res/*
+# database.py
+__pycache__/
+*.sqlite3
+migrations/
+desktop.ini
+*.xlsx
+
+
